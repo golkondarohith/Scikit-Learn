@@ -11,4 +11,6 @@ le = LabelEncoder()
 df_label['Gender_Encoded'] = le.fit_transform(df_label['Gender'])
 df_label['Passed_Encoded'] = le.fit_transform(df_label['Passed'])
 
-print(df_label.head())
+
+df_encoded = pd.get_dummies(df_label, columns=['City'])
+print(df_encoded.head())
