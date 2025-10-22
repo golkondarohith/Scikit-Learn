@@ -13,7 +13,9 @@ hours = float(input("Enter the number of hours studied: "))
 
 result = model.predict([[hours]])[0]
 
+probabilities = model.predict_proba([[hours]])[0]
+
 if result == 0:
-    print(f"Predicted result for the hours {hours}, you are likely to FAIL")
-else: 
-    print(f"Predicted result for the hours {hours}, you are likely to PASS")
+    print(f"You are likely to FAIL. Probability of passing: {probabilities[1]*100:.2f}%")
+else:
+    print(f"You are likely to PASS. Probability of passing: {probabilities[1]*100:.2f}%")
