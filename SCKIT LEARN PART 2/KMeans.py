@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
-
+# Example data
 data = {'Age': [23, 45, 30, 60, 25, 40, 35, 50, 29, 41],
         'Spending_Score': [55, 75, 35, 25, 60, 65, 40, 20, 45, 70]}
 df = pd.DataFrame(data)
