@@ -4,6 +4,9 @@ from sklearn.datasets import fetch_openml
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import KNeighborsClassifier
+import matplotlib.pyplot as plt
+
 
 #Load MNIST Dataset
 mnist = fetch_openml('mnist_784', version=1)
@@ -21,4 +24,18 @@ X_train = scaler.fit_transform(X_train)
 X_test = scaler.fit_transform(X_test)
 
 print(f"Train Set: {X_train.shape}, Test Set: {X_test.shape}")
+
+#k-Nearst Neighbors
+knn = KNeighborsClassifier(n_neighbors=5)
+knn.fit(X_train, y_train)
+y_pred_kmeans = knn.predict(X_test)
+
+#Plotting the KNeighbors
+plt.figure(figsize=(10, 6))
+for i in range(10):
+    plt.subplot(2, 5, i+1)
+    plt.imshow(X_test[i].reshape(28, 28), cmap='gray')
+    plt.title(f"Pred: {y_pred_kmeans[i] }, True: {y_test.iloc[i]}")
+    plt.axis('off')
+plt.show()
 
